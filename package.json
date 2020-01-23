@@ -1,0 +1,26 @@
+{
+  "name": "js-manage-env",
+  "version": "1.0.0",
+  "description": "this will help manage environment well",
+  "main": "index.js",
+  "scripts": {
+    "start-test": "cp .env.react_test .env && yarn append-env-example",
+    "start": "cp .env.react_development .env && yarn append-env-example",
+    "build": "cp .env.react_production .env && yarn append-env-example && aws s3 sync build/ s3://DEMO-APP-LIVE --acl public-read",
+    "test": "craco test",
+    "append-env-example": "cat .env.example >> .env",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "test-deploy": "cp .env.react_development .env && yarn append-env-example && craco build && aws s3 sync build/ s3://demo-app --acl public-read"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duke7able/create-react-app-manage-env.git"
+  },
+  "author": "Shreyan Mehta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duke7able/create-react-app-manage-env/issues"
+  },
+  "homepage": "https://github.com/duke7able/create-react-app-manage-env#readme"
+}
